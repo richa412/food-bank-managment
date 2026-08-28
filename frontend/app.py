@@ -1,13 +1,12 @@
 import streamlit as st
 
-from components.product_form import product_form
-from components.product_list import product_list
+st.set_page_config(page_title="Food Bank Dashboard", layout="wide")
 
-
-st.title("Inventory Management")
-
-product_form()
-
-st.divider()
-
-product_list()
+navigation = st.navigation(
+    [
+        st.Page("pages/dashboard.py", title="Dashboard", default=True),
+        st.Page("pages/centers.py", title="Distribution Centers"),
+        st.Page("pages/history.py", title="Distribution History"),
+    ]
+)
+navigation.run()

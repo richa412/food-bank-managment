@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 import database_models
@@ -21,3 +21,17 @@ def create_center(center: CenterCreate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_center)
     return db_center
+
+
+@router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_center(id: int, db: Session = Depends(get_db)):
+    db_center = (
+        db.query(database_models.DistributionCenter)
+        .filter(database_models.DistributionCenter.id == id)
+        .first()
+    )
+    if db_center is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Distribution center not found")
+
+    db.delete(db_center)
+    db.commit()

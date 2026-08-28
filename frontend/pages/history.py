@@ -1,0 +1,4 @@
+from components.distribution_history import distribution_history_page
+
+
+distribution_history_page()
