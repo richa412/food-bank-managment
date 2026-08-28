@@ -1,6 +1,6 @@
-from datetime import date
+from datetime import date, datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class FoodBase(BaseModel):
@@ -32,5 +32,18 @@ class CenterCreate(BaseModel):
 
 class CenterResponse(CenterCreate):
     id: int
+
+    model_config = {"from_attributes": True}
+
+
+class DistributionCreate(BaseModel):
+    food_id: int
+    center_id: int
+    quantity: int = Field(gt=0)
+
+
+class DistributionResponse(DistributionCreate):
+    id: int
+    distributed_at: datetime
 
     model_config = {"from_attributes": True}

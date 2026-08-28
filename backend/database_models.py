@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Date, Integer, String
+from sqlalchemy import Column, Date, DateTime, Integer, String
+from sqlalchemy.sql import func
 from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
@@ -18,3 +19,13 @@ class DistributionCenter(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
+
+
+class Distribution(Base):
+    __tablename__ = "distributions"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    food_id = Column(Integer, nullable=False)
+    center_id = Column(Integer, nullable=False)
+    quantity = Column(Integer, nullable=False)
+    distributed_at = Column(DateTime, nullable=False, server_default=func.now())

@@ -1,8 +1,8 @@
-"""initial migration
+"""initial food bank schema
 
-Revision ID: 1d7a2398e610
+Revision ID: 89a3bebd9643
 Revises: 
-Create Date: 2026-08-26 11:05:38.222864
+Create Date: 2026-08-28 14:19:19.433581
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '1d7a2398e610'
+revision: str = '89a3bebd9643'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
