@@ -24,3 +24,13 @@ class FoodResponse(FoodBase):
     id: int
 
     model_config = {"from_attributes": True}
+
+
+class CenterCreate(BaseModel):
+    name: str
+
+
+class CenterResponse(CenterCreate):
+    id: int
+
+    model_config = {"from_attributes": True}
